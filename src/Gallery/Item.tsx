@@ -15,14 +15,16 @@ const Item = ({
   imgURL = "https://img.marieclairekorea.com/2022/02/mck_620b83ff0751b.jpg",
 }: Props) => {
   const [isHover, setIsHover] = useState<boolean>(false);
+
   return (
     <StyledItem
+      className="gallery-item"
       isHover={isHover}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
       <a href={moveURL}>
-        <img src={imgURL} alt={"아이유"} />
+        <img src={imgURL} alt={title} />
         {isHover && (
           <div className="hover">
             <section className="inner-hover">
@@ -43,6 +45,8 @@ const StyledItem = styled.li<{
 }>`
   list-style: none;
   position: relative;
+  top: 0px;
+  transition: 0.3s;
   box-shadow: 10px 10px 10px rgba(63, 63, 63, 0.2);
   cursor: pointer;
   img {
@@ -61,10 +65,7 @@ const StyledItem = styled.li<{
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #0c1631b9;
     padding: 16px;
-    color: #fff;
-    z-index: 2;
   }
   .inner-hover {
     display: flex;
@@ -74,5 +75,14 @@ const StyledItem = styled.li<{
     width: 100%;
     height: 100%;
     border: 1px solid #fff;
+  }
+  &:hover {
+    top: 10px;
+  }
+  h1,
+  p {
+    text-align: center;
+    width: 80%;
+    overflow-wrap: break-word;
   }
 `;
